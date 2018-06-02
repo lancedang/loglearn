@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 public class LogHelloWorld {
     public static void main(String[] args) {
         Logger logger = LoggerFactory.getLogger(LogHelloWorld.class);
+
         logger.info("学习 slf4j");
         System.out.println("System out");
     }
