@@ -30,5 +30,27 @@
     </dependencies>
     <build>
         <finalName>loglearn</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <!--定义 compiler 插件的版本, 默认是 2.3.2，实际2.5-->
+                <version>2.5</version>
+                <configuration>
+
+                    <!-- fork 是为 compilerVersion 服务的，必须设为true compile日Version 才起作用 -->
+                    <verbose>true</verbose>
+                    <fork>true</fork>
+                    <executable><!-- path-to-javac --></executable>
+                    <!--指定compiler 使用的 JDK 版本-->
+                    <compilerVersion>1.8</compilerVersion>
+
+                    <!-- 源代码使用的jdk版本 -->
+                    <source>1.8</source>
+                    <!-- 构建后生成class文件jdk版本 -->
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>
