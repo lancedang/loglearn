@@ -3,52 +3,66 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.lance.log</groupId>
     <artifactId>loglearn</artifactId>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>slf-logback-demo</module>
+        <module>slf-first-demo</module>
+    </modules>
     <name>loglearn Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
+        <!--所有子 module 都会继承的依赖-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-
-        <!--可不声明，因为 bindings 会依赖传入-->
-<!--        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.12</version>
-        </dependency>-->
-
-<!--        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.7.25</version>
-        </dependency>-->
-
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.0.13</version>
-        </dependency>
-
-<!--
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.8.0-beta2</version>
-        </dependency>
--->
-
-<!--        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-jdk14</artifactId>
-            <version>1.8.0-beta2</version>
-        </dependency>-->
-
     </dependencies>
+
+    <!--这里声明所有子 module 中可能用到的依赖包及版本，子 module 中只需声明引入(不必重写版本号)即可使用-->
+    <dependencyManagement>
+        <dependencies>
+
+            <!--可不声明，因为 bindings 会依赖传入-->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.12</version>
+            </dependency>
+
+            <!--slf4j-simple bindings-->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>1.7.25</version>
+            </dependency>
+
+            <!--logback bindings-->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>1.0.13</version>
+            </dependency>
+
+            <!--log4j bindings-->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>1.8.0-beta2</version>
+            </dependency>
+
+            <!--jdk bindings-->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-jdk14</artifactId>
+                <version>1.8.0-beta2</version>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+
     <build>
         <finalName>loglearn</finalName>
         <plugins>
