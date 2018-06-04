@@ -11,6 +11,13 @@
     </modules>
     <name>loglearn Maven Webapp</name>
     <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
     <dependencies>
         <!--所有子 module 都会继承的依赖-->
         <dependency>
@@ -65,27 +72,39 @@
 
     <build>
         <finalName>loglearn</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <!--定义 compiler 插件的版本, 默认是 2.3.2，实际2.5-->
-                <version>2.5</version>
-                <configuration>
-
-                    <!-- fork 是为 compilerVersion 服务的，必须设为true compile日Version 才起作用 -->
-                    <verbose>true</verbose>
-                    <fork>true</fork>
-                    <executable><!-- path-to-javac --></executable>
-                    <!--指定compiler 使用的 JDK 版本-->
-                    <compilerVersion>1.8</compilerVersion>
-
-                    <!-- 源代码使用的jdk版本 -->
-                    <source>1.8</source>
-                    <!-- 构建后生成class文件jdk版本 -->
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-        </plugins>
+        <!--子 module 会自动继承如下 maven 插件，子 module 不需声明即可自动引入(此处不同于 依赖的 management)-->
+        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+            <plugins>
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+                <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.0.2</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.7.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.20.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.0.2</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>2.5.2</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.2</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 </project>
