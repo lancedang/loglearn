@@ -25,11 +25,14 @@
                 </dependency>-->
 
         <!--继承 parent 版本-->
-        <dependency>
+<!--        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
+        </dependency>-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
         </dependency>
-
     </dependencies>
 
 </project>
