@@ -13,6 +13,7 @@ public class MainApp {
     public static final Logger LOGGER = LoggerFactory.getLogger(MainApp.class);
 
     public static void main(String[] args) {
+
         LOGGER.trace("Hello World!");
         LOGGER.debug("How are you today?");
         LOGGER.info("I am fine.");
