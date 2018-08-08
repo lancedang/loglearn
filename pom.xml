@@ -8,6 +8,7 @@
     <modules>
         <module>slf-logback-demo</module>
         <module>slf-first-demo</module>
+        <module>springbootlog</module>
     </modules>
     <name>loglearn Maven Webapp</name>
     <url>http://maven.apache.org</url>
