@@ -11,6 +11,6 @@ public class LogHelloWorld {
         Logger logger = LoggerFactory.getLogger(LogHelloWorld.class);
 
         logger.info("学习 slf4j");
-        System.out.println("System out");
+        //System.out.println("System out");
     }
 }
