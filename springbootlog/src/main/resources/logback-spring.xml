@@ -22,9 +22,8 @@
     <appender name="console2" class="ch.qos.logback.core.ConsoleAppender">
 
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>warn</level>
+            <level>info</level>
         </filter>
-
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
@@ -41,8 +40,8 @@
         </encoder>
     </appender>
 
-    <root level="warn">
-        <appender-ref ref="console"/>
+    <root level="error">
+        <appender-ref ref="console2"/>
         <!--<appender-ref ref="console2"/>-->
     </root>
 
