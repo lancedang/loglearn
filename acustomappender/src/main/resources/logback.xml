@@ -8,7 +8,7 @@
     </appender>
 
     <appender name="mapAppender" class="com.lance.log.customappender.MapAppender">
-        <prefix>hello</prefix>
+        <!--<prefix>hello</prefix>-->
     </appender>
 
     <root level="debug">

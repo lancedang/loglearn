@@ -10,17 +10,20 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class MapAppender extends AppenderBase<ILoggingEvent> {
 
-    private ConcurrentHashMap<String, String> eventMap = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<String, ILoggingEvent> eventMap = new ConcurrentHashMap<>();
 
     //定义Appender属性，设置setter可在xml Appender中进行属性配置
     private String prefix;
 
     @Override
     protected void append(ILoggingEvent o) {
-        eventMap.put(prefix + "-" + System.currentTimeMillis(), o.toString());
+        if (prefix == null || "".equalsIgnoreCase(prefix)) {
+            addError("prefix can't be empty");
+            return;
+        }
+        eventMap.put(prefix + "-" + System.currentTimeMillis(), o);
         System.out.println(prefix + "-" + System.currentTimeMillis() + ", " + o.toString());
     }
-
 
     public String getPrefix() {
         return prefix;
