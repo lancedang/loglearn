@@ -1,4 +1,4 @@
-package com.lance.log.boot;
+package com.lance.log.springbootprofile;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,12 +9,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Hello world!
  */
 @SpringBootApplication
-public class App {
+public class MainApp {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(MainApp.class);
 
     public static void main(String[] args) {
-        SpringApplication.run(App.class, args);
+        SpringApplication.run(MainApp.class, args);
         LOGGER.info("log test info");
         LOGGER.warn("log test warn");
         LOGGER.error("log test error");

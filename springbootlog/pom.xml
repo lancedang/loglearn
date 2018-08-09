@@ -10,7 +10,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>spring</groupId>
+    <groupId>com.lance.log</groupId>
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <artifactId>springbootlog</artifactId>

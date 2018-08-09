@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <jmxConfigurator/>
+
+    <appender name="dev_stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%date [%thread] %-5level %logger{80}- %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="fat_stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%date [%thread] %-5level %logger{80}- %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="prd_stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%date [%thread] %-5level %logger{80}- %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <springProfile name="dev">
+        <root>
+            <level value="INFO"/>
+            <appender-ref ref="dev_stdout"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="fat">
+        <root>
+            <level value="warn"/>
+            <appender-ref ref="fat_stdout"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="pre,prd">
+        <root>
+            <level value="error"/>
+            <appender-ref ref="prd_stdout"/>
+        </root>
+    </springProfile>
+
+</configuration>

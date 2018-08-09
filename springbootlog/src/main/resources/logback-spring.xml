@@ -2,13 +2,29 @@
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
     <contextName>logback</contextName>
     <!--文件需要提前创建-->
-    <property name="logfile.path" value="F:\\log.txt"/>
+    <property name="logfile.path" value="D:\\log.txt"/>
 
     <!--输出到控制台-->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-             <level>ERROR</level>
-         </filter>-->
+
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>NEUTRAL</onMismatch>
+        </filter>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--输出到控制台-->
+    <appender name="console2" class="ch.qos.logback.core.ConsoleAppender">
+
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>warn</level>
+        </filter>
+
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
@@ -25,16 +41,9 @@
         </encoder>
     </appender>
 
-    <root level="info">
-        <appender-ref ref="console" />
-        <appender-ref ref="file" />
-    </root>
-
-    <!-- 指定java中的包 -->
-    <logger name="com.lance.controller"/>
-    <!--指定某个类的全路径 -->
-    <logger name="com.lance.controller.LearnController" level="WARN" additivity="false">
+    <root level="warn">
         <appender-ref ref="console"/>
-    </logger>
+        <!--<appender-ref ref="console2"/>-->
+    </root>
 
 </configuration>
