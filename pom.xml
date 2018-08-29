@@ -10,6 +10,8 @@
         <module>slf-first-demo</module>
         <module>springbootlog</module>
         <module>acustomappender</module>
+        <module>slf-simple-demo</module>
+        <module>slf-mvplog-demo</module>
     </modules>
     <name>loglearn Maven Webapp</name>
     <url>http://maven.apache.org</url>
