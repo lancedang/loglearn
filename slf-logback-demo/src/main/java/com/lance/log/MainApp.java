@@ -1,7 +1,6 @@
 package com.lance.log;
 
-import ch.qos.logback.classic.LoggerContext;
-import ch.qos.logback.core.util.StatusPrinter;
+import com.lance.log.log4j.Log4jApp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,9 +20,10 @@ public class MainApp {
         LOGGER.error("I am programming.");
 
         //打印 logback 内部状态信息，在未配置 logback.xml 时要编程实现，当配置了 配置文件后自动打印
-        LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
-        StatusPrinter.print(loggerContext);
+/*        LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
+        StatusPrinter.print(loggerContext);*/
 
+        Log4jApp.test();
 
     }
 }

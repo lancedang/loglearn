@@ -18,8 +18,20 @@
     <dependencies>
 
         <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-to-slf4j</artifactId>
+            <version>2.11.1</version>
+        </dependency>
+
+        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
+        </dependency>
+
+        <dependency>
+            <artifactId>slf-log4j-demo</artifactId>
+            <groupId>com.lance.log</groupId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
     </dependencies>

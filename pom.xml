@@ -12,6 +12,7 @@
         <module>acustomappender</module>
         <module>slf-simple-demo</module>
         <module>slf-mvplog-demo</module>
+        <module>slf-log4j-demo</module>
     </modules>
     <name>loglearn Maven Webapp</name>
     <url>http://maven.apache.org</url>
@@ -55,6 +56,12 @@
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
                 <version>1.0.13</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>2.10.0</version>
             </dependency>
 
             <!--log4j bindings-->
