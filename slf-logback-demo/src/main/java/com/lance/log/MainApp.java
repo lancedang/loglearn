@@ -22,8 +22,6 @@ public class MainApp {
         //打印 logback 内部状态信息，在未配置 logback.xml 时要编程实现，当配置了 配置文件后自动打印
 /*        LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
         StatusPrinter.print(loggerContext);*/
-
         Log4jApp.test();
-
     }
 }
