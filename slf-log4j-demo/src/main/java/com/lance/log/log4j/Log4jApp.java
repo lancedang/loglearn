@@ -1,10 +1,10 @@
 package com.lance.log.log4j;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 /**
- * 直接引用log4j接口
+ * Hello world!
  */
 public class Log4jApp {
 
@@ -15,8 +15,8 @@ public class Log4jApp {
     }
 
     public static void test() {
-        logger.info("info log4j");
-        logger.error("error log4j");
+        logger.info("info log4j2");
+        logger.error("error log4j2");
         System.out.println("Hello World!");
     }
 }

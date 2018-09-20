@@ -12,7 +12,6 @@
         <module>acustomappender</module>
         <module>slf-simple-demo</module>
         <module>slf-mvplog-demo</module>
-        <module>slf-log4j-demo</module>
     </modules>
     <name>loglearn Maven Webapp</name>
     <url>http://maven.apache.org</url>
@@ -64,7 +63,7 @@
                 <version>2.10.0</version>
             </dependency>
 
-            <!--log4j bindings-->
+            <!--log4j2 bindings-->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-log4j12</artifactId>
