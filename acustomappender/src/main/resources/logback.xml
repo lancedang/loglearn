@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration debug="true">
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
-        </layout>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%date [%-5thread] %-5level [%-10logger] %-10msg%n</pattern>
+        </encoder>
+
     </appender>
 
     <appender name="mapAppender" class="com.lance.log.customappender.MapAppender">
@@ -13,6 +14,6 @@
 
     <root level="debug">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="mapAppender"/>
+        <!--<appender-ref ref="mapAppender"/>-->
     </root>
 </configuration>
