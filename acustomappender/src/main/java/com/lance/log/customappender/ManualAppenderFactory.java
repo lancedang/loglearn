@@ -5,6 +5,7 @@ import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.encoder.PatternLayoutEncoder;
 import ch.qos.logback.classic.spi.ILoggingEvent;
+import ch.qos.logback.core.Appender;
 import ch.qos.logback.core.ContextBase;
 import ch.qos.logback.core.FileAppender;
 import ch.qos.logback.core.rolling.RollingFileAppender;
@@ -13,6 +14,8 @@ import ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy;
 import ch.qos.logback.core.rolling.TimeBasedRollingPolicy;
 import ch.qos.logback.core.util.FileSize;
 import org.slf4j.LoggerFactory;
+
+import java.util.Iterator;
 
 
 public class ManualAppenderFactory {
@@ -46,6 +49,21 @@ public class ManualAppenderFactory {
 
     public static void createRollingFileAppender() {
         LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
+
+        Logger root = (Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
+        Iterator<Appender<ILoggingEvent>> iterator = root.iteratorForAppenders();
+
+        while (iterator.hasNext()) {
+            Appender<ILoggingEvent> tempAppender = iterator.next();
+            //already exist
+            if (tempAppender.getClass() == RollingFileAppender.class) {
+                System.out.println("already exists RollingFileAppender");
+                return;
+            }
+
+        }
+
+        //create
         PatternLayoutEncoder ple = new PatternLayoutEncoder();
 
         ple.setPattern("%date %level [%thread] %logger{10} [%file:%line] %msg%n");
@@ -55,7 +73,7 @@ public class ManualAppenderFactory {
         //rollingPolicy
         SizeAndTimeBasedRollingPolicy rollingPolicy = new SizeAndTimeBasedRollingPolicy<Object>();
 
-        //组装RollingPolicy
+        //construct RollingPolicy
         rollingPolicy.setFileNamePattern(DATE_PATTERN_WITH_SECONDS);
         rollingPolicy.setMaxHistory(5);
         rollingPolicy.setMaxFileSize(FileSize.valueOf("10KB"));
@@ -63,7 +81,7 @@ public class ManualAppenderFactory {
         rollingPolicy.setContext(lc);
         rollingPolicy.setTotalSizeCap (FileSize.valueOf("10GB"));
 
-        //最后组装RollingFileAppender
+        //construct RollingFileAppender
         RollingFileAppender<ILoggingEvent> fileAppender = new RollingFileAppender<ILoggingEvent>();
         fileAppender.setName("rolling");
         fileAppender.setFile(LOG_DIR + "/" + LOG_FILE_NAME);
@@ -76,9 +94,7 @@ public class ManualAppenderFactory {
         fileAppender.setContext(lc);
         fileAppender.start();
 
-        Logger logger = (Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
-        logger.addAppender(fileAppender);
-        logger.setLevel(Level.INFO);
+        root.addAppender(fileAppender);
 
     }
 

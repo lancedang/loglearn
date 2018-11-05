@@ -13,6 +13,7 @@ public class MainApp {
 
         try {
             ManualAppenderFactory.createRollingFileAppender();
+            ManualAppenderFactory.createRollingFileAppender();
         } catch (Exception e) {
             //若自动创建失败不做任何处理
             //Cat.logError("create fileAppender fail", e);
